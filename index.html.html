@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Genial</title>
+
+    <style>
+        /* === CSS Styling Starts Here === */
+
+        /* Basic Reset and Body Styling */
+        body {
+            font-family: 'Arial', sans-serif; /* Use a clear font */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Light grey background */
+            color: #333; /* Dark grey text */
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #5a2d82; /* A purple color */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Main Content Area */
+        main {
+            max-width: 1000px; /* Limit the width of the main content */
+            margin: 20px auto; /* Center the main content */
+            padding: 0 15px; /* Add some padding on the sides */
+        }
+
+        /* Container for the two main content columns (History and Phrases) */
+        .main-content-grid {
+            display: grid; /* Use grid for layout */
+            /* Create two columns of equal width */
+            grid-template-columns: 1fr 1fr;
+            gap: 30px; /* Space between the columns */
+            margin-bottom: 30px; /* Space below these columns before images/videos */
+        }
+
+        /* Styling for the sections/content within the main grid */
+        .main-content-grid section,
+        .main-content-grid .history-content { /* Target the sections and the div for history */
+             background-color: #fff;
+             padding: 20px;
+             border-radius: 8px; /* Rounded corners */
+             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+             /* Ensure content inside fills the grid cell height for uniform blocks */
+             height: 100%;
+             box-sizing: border-box; /* Include padding in element's total width and height */
+             display: flex; /* Use flex to arrange content inside vertically */
+             flex-direction: column;
+        }
+
+         .main-content-grid section h2,
+         .main-content-grid .history-content h2 { /* Style headings within the grid items */
+            color: #5a2d82; /* Matching header color */
+            border-bottom: 2px solid #eee; /* Separator line */
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 15px; /* Space below heading */
+        }
+
+        /* Specific styling for the "Acontecimientos Importantes" heading if needed */
+         .main-content-grid .history-content h3 {
+            color: #5a2d82;
+            margin-top: 15px;
+            margin-bottom: 10px;
+         }
+
+         .main-content-grid .history-content p,
+         .main-content-grid section p,
+         .main-content-grid .history-content ul { /* Apply spacing to paragraphs and the list */
+             margin-bottom: 15px;
+         }
+
+         .main-content-grid .history-content p:last-child,
+         .main-content-grid section p:last-child {
+             margin-bottom: 0; /* Remove margin from the last paragraph */
+         }
+
+         .main-content-grid .history-content ul {
+             padding-left: 20px; /* Add padding for list bullets */
+             flex-grow: 1; /* Allow the list to take up available space */
+         }
+
+         .main-content-grid .history-content ul li {
+             margin-bottom: 8px; /* Space between list items */
+         }
+
+
+        /* Image Gallery Styling */
+        .images-section {
+            margin-bottom: 30px; /* Space below the images section */
+        }
+
+        .gallery {
+            display: grid; /* Use grid for layout */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns (3-4 or more depending on minmax and screen size) */
+            gap: 10px; /* Space between images */
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto; /* Changed to auto for better scaling */
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease; /* Smooth hover effect */
+            object-fit: cover; /* Crop images slightly to fit grid cell */
+            display: block; /* Remove extra space below images */
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        /* Video List Styling */
+        .videos-section {
+             margin-bottom: 30px; /* Space below the videos section */
+        }
+
+        .video-list {
+            display: grid; /* Changed from flex to grid */
+            /* Creates columns that are at least 300px wide, auto-fitting as many as possible */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; /* Space between videos */
+            margin-top: 20px;
+            /* justify-items: center; /* Optional: Center items within their grid cell */
+        }
+
+        .video-list video {
+            width: 100%; /* Make videos take the full width of their grid cell */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: block; /* Remove extra space below videos */
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            background-color: #333; /* Dark background for footer */
+            color: #fff;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .main-content-grid {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+                gap: 20px; /* Adjust gap */
+            }
+            .gallery {
+                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller min-width for images on small screens */
+            }
+             .video-list {
+                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Smaller min-width for videos on small screens */
+             }
+        }
+
+        /* === CSS Styling Ends Here === */
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>DIARIO DIGITAL</h1>
+        <p>Aqui escribire algo breve sobre mi historia. Nacimiento 15 de julio del año 2006 Actualmente estoy cursando el 5to ciclo de la carrera de ingenieria en sistemas agradeciendo al docente que enseño clases de Pseint en 5to año se secundaria, me atrajo
+            la programacion por su estructura y por todo lo que tiene detras todo ello.
+            <br>Acontesimientos Importantes<br/>
+            <br>- Fallecimiento (1er amigo) 15/08/2015 juan carlos (gustos semejantes y con gustos iguales) atropellado por conductor imprudente en afueras del colegio (viernes 6:00 pm)<br/>
+            <br>- Fallecimiento (mejor amigo) 29/04/2021 02:39 am Aldo (amigos de vecindario, gustos musicales y sueños semejantes) Fallecimiento debido a covid y falla cardiaca<br/>
+            <br>- Disputa Familiar (Padre) 15/06/2019 18:00 pm Astryd (acusado de una papeleta y casi sentenciado sin pruebas) Error no reconocido<br/>
+            <br>- Pelea (padre) 26/07/2024 Golpeado sin Reconocer los verdaderos echos sin escuchar mi testimonio, Sentenciado sin pruebas<br/>
+            <br>- Primer amor(Intentemoslo) (SD) 22/07/2023 Me abri a amar a una persona por primera vez al confiar en que no me jusgarian sin conocerme de brevedad.<br/>
+            <br>- Fin (1era relacion) 29/07/2023 Me pidio que la esperara y respete su decicion, no estava en pocision de reputar no sabia que hacer aun era muy indeciso.<br/>
+            <br>- Primera relacion (estable) 31/03/2024 Despues de los acontesimentos anteriores y tras refleccionar un poco decidi darme una ultima oportuniad al abrirme con otra persona. al incio fue un poco dificil y aunque sucedieron muchas cosas
+            y algunos problemas asta el momento hemos podido salir adelante. es adorable su estatura sin embargo me soprende su nivel de devocion y madures. ella es el freno ya que siempre que trato de seducirla para observar su reaccion tan adorable
+            y firme a la vez me dan ganas de hacerle travesuras, aunque por una parte me guargo algunas cosas las cuales no escribi aqui por multiples rrazones me gustaria que siga madurando el fruto de nuestro cariño y respeto con el paso del tiempo
+            y que el silencio aplace la desconfianza que sale a la luz en los pequeños problemas. me gustaria que madure mas y que siga esforzandose para alcanzar sus metas. cuando esta enfocada se ve mas preciosa de lo que puedo admitir. sin embargo
+            el resto de informacion por motivos de seguridad y que guardare para mi futura esposa o acompañante se mantendra en la carcel de mis pensamientos los cuales me atormentan al pasar del tiempo pero los cuales son los que me an formado mi caracter<br/>            como persona. creditos a los inge de sistemas
+        </p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Seccion De Frases</h2>
+            <p>
+                <br>"El secreto de la existencia humana no sólo está en vivir, sino también en saber para qué se vive.”<br/>
+                <br>“La conciencia es un dolor que no se puede evitar.”<br/>
+                <br>"Si tenemos derecho a vivir, tenemos derecho a morir."<br/>
+                <br>"La soledad es como un cáncer que se come el corazón."<br/>
+                <br>"La justicia es un arma, puede utilizarse para infligir daño pero no para proteger o salvar a otros."<br/>
+                <br>"Si quieres culpar a alguien por esto, culpa a tu propia impotencia."<br/>
+                <br>"Si sientes algo, deberías expresarlo con palabras, o los idiotas como yo no te comprenderán."<br/>
+                <br>"¿Qué la muerte es la forma suprema de la ciencia? No seas ridículo. ¡Mataré a cualquiera que no aprecie la vida!"<br/>
+                <br>"Un suicidio limpio, brillante y alegre."<br/>
+                <br>"Tu bote solo soporta a una persona. Si intentas salvar a alguien que no puedes salvar... ambos se hundirán."<br/>
+                <br>"Teme a la muerte. Teme a aquellos que traen la muerte. Aquellos que buscan la muerte. Deben ser buscados... Por la muerte."<br/>
+                <br>"¿Crees que las lagrimas alivian a los muertos? Dudo que los alivie o redima. Pues su tiempo se detuvo cuando murieron."<br/>
+                <br>"Aunque le teman a la muerte, las personas no dejan de acercársele. Sea en ciudades o en la literatura, la muerte no deja de consumir personas. Es un evento de la vida que no se puede revertir."<br/>
+                <br>"Por muy difícil que sea una guerra, siempre existe una solución lógica y óptima. Mantenlo presente en tiempos de confusión que te inciten a actuar con imprudencia."<br/>
+                <br>"Los poderes no traen felicidad a sus portadores."<br/>
+                <br>"El tiempo pierde el significado para los muertos."<br/>
+                <br>"¿Hay algo mejor que estar vivo?"<br/>
+                <br>"La desesperación puede matar hasta a los más hábiles."<br/>
+                <br>"Incluso los profesionales terminan asesinados por dudar."<br/>
+            </p>
+            <p>Perros callejeros que buscan una razón para vivir</p>
+        </section>
+
+        <section class="images-section">
+            <h2>IMAGENES INTERESANTES</h2>
+            <div class="gallery">
+                <img src="c:\Users\LENOVO\Pictures\Camera Roll\Recuerdos\WhatsApp Image 2023-10-03 at 20.52.21.jpeg" alt="Imagen interesante 1">
+                <img src="c:\Users\LENOVO\Pictures\Camera Roll\Recuerdos\WhatsApp Image 2023-10-03 at 20.52.22.jpeg" alt="Imagen interesante 2">
+                <img src="c:\Users\LENOVO\Pictures\Camera Roll\Recuerdos\IMG-20240719-WA0053.jpg" alt="Imagen interesante 3">
+                <img src="c:\Users\LENOVO\Pictures\Camera Roll\Recuerdos\IMG-20241220-WA0034.jpg" alt="Imagen interesante 4">
+                </div>
+        </section>
+
+        <section class="videos-section">
+            <h2>VIDEOS RELEVANTES EN HISTORIAS</h2>
+            <div class="video-list">
+                <video controls width="480">
+                    <source src="d:\fotos memoria vieja\20210429_125942.mp4"  type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <video controls width="480">
+                    <source src="c:\Users\LENOVO\Pictures\Camera Roll\Recuerdos\VID-20241219-WA0016.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <video controls width="480">
+                    <source src="c:\Users\LENOVO\Documents\recuerdos 2024\9a9e86d837bf483d96a7805ecb916667.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <video controls width="480">
+                    <source src="c:\Users\LENOVO\Documents\recuerdos 2024\20241101_081249.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <video controls width="480">
+                    <source src="c:\Users\LENOVO\Documents\recuerdos 2024\20241102_152411.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <video controls width="480">
+                    <source src="c:\Users\LENOVO\Documents\recuerdos 2024\20240708_135411.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                 <video controls width="480">
+                    <source src="c:\Users\LENOVO\Documents\recuerdos 2024\20240712_141844.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <video controls width="480">
+                    <source src="c:\Users\LENOVO\Documents\recuerdos 2024\20240710_161457.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nombre o Marca. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
